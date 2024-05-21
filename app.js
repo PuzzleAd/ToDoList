@@ -3,12 +3,15 @@ const plusButton = document.getElementById("plus-container");
 const taskCounter = document.getElementById("task-counter");
 const idBox = document.getElementById("id-box");
  
-let taskQuantity = 0;
 
 taskCounter.textContent = `Tasks to do - 0`;
 
 
+let taskQuantity = 0;
+
+
 plusButton.addEventListener("click", function () {
+
     let inputValue = input.value.trim();
 
 
@@ -30,7 +33,7 @@ plusButton.addEventListener("click", function () {
         let checkImage = document.createElement("img");
         checkImage.src = "checker.svg";
         iconContainer.appendChild(checkImage);
-        checkImage.style.fill = "green"
+        checkImage.classList.add("active");
         checkImage.style.cursor = "pointer";
 
         let trashImage = document.createElement("img");
@@ -39,11 +42,46 @@ plusButton.addEventListener("click", function () {
         trashImage.style.cursor = "pointer";
 
 
+        trashImage.addEventListener("click", function () {
+            idBox.removeChild(taskBox);
+            taskQuantity -= 1;
+            taskCounter.textContent = `Tasks to do - ${taskQuantity}`;
+
+        })
+
+        checkImage.addEventListener("click", function () {
+            if(checkImage.classList.contains("active")) {
+                checkImage.src = "checker-green.svg";
+                checkImage.classList.remove("active");
+                taskText.classList.remove("taskText");
+                taskText.classList.add("taskTextGreen")
+                taskQuantity -= 1;
+                taskCounter.textContent = `Tasks to do - ${taskQuantity}`;
+
+            }else {
+                checkImage.src = "checker.svg";
+                checkImage.classList.add("active");
+                taskText.classList.remove("taskTextGreen");
+                taskText.classList.add("taskText");
+                taskQuantity 
+                += 1;
+            taskCounter.textContent = `Tasks to do - ${taskQuantity}`;
+            }
+            
+        })
+
+        taskCounter.textContent = `Tasks to do - ${taskQuantity}`;
+
+
+        console.log(taskQuantity);
+
     }
 
-    taskCounter.textContent = `Tasks to do - ${taskQuantity}`;
+
+    input.value = "";
     
 })
 
-console.log(taskQuantity);
+
+
 
