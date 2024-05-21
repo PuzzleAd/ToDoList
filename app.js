@@ -55,17 +55,12 @@ plusButton.addEventListener("click", function () {
                 checkImage.classList.remove("active");
                 taskText.classList.remove("taskText");
                 taskText.classList.add("taskTextGreen")
-                taskQuantity -= 1;
-                taskCounter.textContent = `Tasks to do - ${taskQuantity}`;
 
             }else {
                 checkImage.src = "checker.svg";
                 checkImage.classList.add("active");
                 taskText.classList.remove("taskTextGreen");
                 taskText.classList.add("taskText");
-                taskQuantity 
-                += 1;
-            taskCounter.textContent = `Tasks to do - ${taskQuantity}`;
             }
             
         })
@@ -73,7 +68,6 @@ plusButton.addEventListener("click", function () {
         taskCounter.textContent = `Tasks to do - ${taskQuantity}`;
 
 
-        console.log(taskQuantity);
 
     }
 
